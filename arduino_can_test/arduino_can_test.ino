@@ -3792,7 +3792,7 @@ void irq(const CAN_message_t &ref) {
     
     uint16_t mottorque = (msg[2]<<8)|(msg[3]);
     int torque1 = (int) mottorque;
-    data.mototrTorque = (float) (torque1-16)*0.01; 
+    data.mototrTorque = (float) (torque1-1600)*0.01; 
 
     uint16_t throttle = (msg[4]<<8)|(msg[5]);
     int t = (int) throttle;
