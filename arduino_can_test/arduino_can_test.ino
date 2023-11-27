@@ -3714,7 +3714,7 @@ double fc_val(double speed, double throttle1)
 
 CAN_message_t tx_msg, rx_msg;
 struct mydata{
-  int millivoltdata =0.123456; //millivolt
+  float millivoltdata =0.123456; //millivolt
   float SOC=0.5123456789;
   float current=0;
   int maxCharge = 123;
@@ -3748,13 +3748,15 @@ void irq(const CAN_message_t &ref) {
     voltage = voltage*5;
     data.millivoltdata = voltage;
     
+   
+    
     uint16_t SOCdata = (msg[2]<<2)|(msg[3]>>6);
     int SOC1 = (int) SOCdata;
     data.SOC = (float) SOC1*0.1/100; 
 
-    uint16_t currentData = (msg[6]<<8)|(msg[7]);
+    uint16_t currentData = (msg[4]<<8)|(msg[5]);
     int current = (int) currentData;
-    data.current = (current-32768)*0.00446777;
+    data.current = current/100;
     
   }else if(ref.id==17){
      uint8_t* msg;
@@ -3792,7 +3794,7 @@ void irq(const CAN_message_t &ref) {
     
     uint16_t mottorque = (msg[2]<<8)|(msg[3]);
     int torque1 = (int) mottorque;
-    data.mototrTorque = (float) (torque1-1600)*0.01; 
+    data.mototrTorque = (float) (torque1-16000)/1000; 
 
     uint16_t throttle = (msg[4]<<8)|(msg[5]);
     int t = (int) throttle;
