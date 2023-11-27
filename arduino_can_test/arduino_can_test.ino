@@ -3730,6 +3730,7 @@ struct mydata{
   float enginethrottle=0;
   float handthrottle=0;
   float fuel=0.0001;
+  float inst_fuel=0;
   float dist=0;
   float veh_speed=00;
 }data;
@@ -3829,13 +3830,25 @@ void setup() {
 }
 
 void loop() {
+    String a = Serial.read();
+    if(a=="R"){
+      data.dist=0;
+      data.fuel = 1e-10;
+      delay(1000);
+    }
     int t = millis();
-    if(data.engineRPM<2500){
-      data.fuel = data.fuel*1.0 + fc_val(2500,data.enginethrottle)*(t-prevt)/(1000.0*60*60*0.74);
+    if(data.engineRPM<100){
+      data.inst_fuel = 0;
+      data.fuel = data.fuel*1.0 + data.inst_fuel*(t-prevt)/(1000.0*60*60*0.74);
+    }else if(data.engineRPM<2500){
+      data.inst_fuel = fc_val(2500,data.enginethrottle);
+      data.fuel = data.fuel*1.0 + data.inst_fuel*(t-prevt)/(1000.0*60*60*0.74);
     }else if(data.engineRPM>6000){
-      data.fuel = data.fuel*1.0 + fc_val(6000,data.enginethrottle)*(t-prevt)/(1000.0*60*60*0.74);
+      data.inst_fuel = fc_val(6000,data.enginethrottle);
+      data.fuel = data.fuel*1.0 + data.inst_fuel*(t-prevt)/(1000.0*60*60*0.74);
     }else{
-      data.fuel = data.fuel*1.0 + fc_val(data.engineRPM,data.enginethrottle)*(t-prevt)/(1000.0*60*60*0.74);
+      data.inst_fuel = fc_val(data.engineRPM,data.enginethrottle);
+      data.fuel = data.fuel*1.0 + data.inst_fuel*(t-prevt)/(1000.0*60*60*0.74);
     }
     data.dist = 1.0*data.dist + data.veh_speed*(t-prevt)/(1000.0*60*60);
     data.kmpl = 1.0*data.dist/data.fuel;
@@ -3884,6 +3897,9 @@ void loop() {
       Serial.print("#");
       Serial.print("MRPM");
       Serial.print(data.motorRPM,6);
+      Serial.print("#");
+      Serial.print("ISF");
+      Serial.print(data.inst_fuel,6);
       Serial.print("#");
       Serial.print("ETO");
       Serial.print(data.engineTorque,6);

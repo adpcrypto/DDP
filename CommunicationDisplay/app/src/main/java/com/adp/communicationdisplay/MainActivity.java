@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             Toast.makeText(context, "NO DEVICE",Toast.LENGTH_SHORT);
             Log.e("A","A");
         }else {
-            serialDevice.write("RESET".getBytes());
+            serialDevice.write("X".getBytes());
         }
     }
     String data = null;
@@ -290,6 +290,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                             q = q.replace("TRD","");
                             Float mill_val = Float.parseFloat(q);
                             dataViewModel.setDistance(mill_val);
+                        }
+                        if(q.contains("ISF")){
+                            q = q.replace("ISF","");
+                            Float mill_val = Float.parseFloat(q);
+                            dataViewModel.setFuelConsump(mill_val);
                         }
                     }
                 }
