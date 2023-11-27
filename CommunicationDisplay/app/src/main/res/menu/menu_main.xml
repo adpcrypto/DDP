@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.adp.communicationdisplay.MainActivity">
+    <item
+        android:id="@+id/s1"
+        android:title="Main"
+        />
+    <item
+        android:id="@+id/s2"
+        android:title="Details"
+        />
+    <!--<item
+        android:id="@+id/s3"
+        android:title="Motor"
+        />-->
+</menu>

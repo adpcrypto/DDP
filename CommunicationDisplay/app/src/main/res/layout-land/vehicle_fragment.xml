@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <com.github.anastr.speedviewlib.PointerSpeedometer
+        android:id="@+id/veh_speed"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:sv_textColor="#00FFFFFF"
+        app:sv_speedTextColor="@color/white"
+        app:sv_indicator="NeedleIndicator"
+        app:sv_centerCircleRadius="8dp"
+        app:sv_unitTextColor="@color/white"
+        app:sv_indicatorLightColor="#007A1111"
+        app:sv_backgroundCircleColor="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:sv_maxSpeed="80"
+        app:sv_minSpeed="0"
+        app:sv_centerCircleColor="@color/black"
+        app:sv_unit=""
+        app:sv_withTremble="false"
+        android:layout_marginStart="15dp" />
+    <TextView
+        android:id="@+id/veh_speed_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/veh_speed"
+        android:layout_marginTop="105dp"
+        app:layout_constraintStart_toStartOf="@id/veh_speed"
+        app:layout_constraintEnd_toEndOf="@id/veh_speed"
+        android:text="Speed(km/h)"/>
+
+
+    <com.github.anastr.speedviewlib.PointerSpeedometer
+        android:id="@+id/engineRPM"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:sv_textColor="#00FFFFFF"
+        app:sv_speedTextColor="@color/white"
+        app:sv_indicator="NeedleIndicator"
+        app:sv_centerCircleRadius="8dp"
+        app:sv_unitTextColor="@color/white"
+        app:sv_indicatorLightColor="#007A1111"
+        app:sv_backgroundCircleColor="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="@id/veh_speed"
+        app:layout_constraintEnd_toEndOf="@id/veh_speed"
+        app:layout_constraintTop_toBottomOf="@id/veh_speed_text"
+        app:sv_maxSpeed="7000"
+        app:sv_minSpeed="0"
+        app:sv_centerCircleColor="@color/black"
+        app:sv_unit=""
+        app:sv_withTremble="false"/>
+    <TextView
+        android:id="@+id/e_rpm_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/engineRPM"
+        android:layout_marginTop="105dp"
+        app:layout_constraintStart_toStartOf="@id/engineRPM"
+        app:layout_constraintEnd_toEndOf="@id/engineRPM"
+        android:text="Engine RPM"/>
+
+    <com.github.anastr.speedviewlib.PointerSpeedometer
+        android:id="@+id/hand_throttle"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:sv_textColor="#00FFFFFF"
+        app:sv_speedTextColor="@color/white"
+        app:sv_indicator="NeedleIndicator"
+        app:sv_centerCircleRadius="8dp"
+        app:sv_unitTextColor="@color/white"
+        app:sv_indicatorLightColor="#007A1111"
+        app:sv_backgroundCircleColor="#00FFFFFF"
+        app:layout_constraintStart_toEndOf="@id/veh_speed"
+        app:layout_constraintTop_toTopOf="parent"
+        app:sv_maxSpeed="100"
+        app:sv_minSpeed="0"
+        app:sv_centerCircleColor="@color/black"
+        app:sv_unit=""
+        app:sv_withTremble="false"
+        android:layout_marginStart="5dp" />
+    <TextView
+        android:id="@+id/hand_throttle_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/hand_throttle"
+        android:layout_marginTop="105dp"
+        app:layout_constraintStart_toStartOf="@id/hand_throttle"
+        app:layout_constraintEnd_toEndOf="@id/hand_throttle"
+        android:text="Throttle(%)"/>
+
+    <com.github.anastr.speedviewlib.PointerSpeedometer
+        android:id="@+id/e_to"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:sv_textColor="#00FFFFFF"
+        app:sv_speedTextColor="@color/white"
+        app:sv_indicator="NeedleIndicator"
+        app:sv_centerCircleRadius="8dp"
+        app:sv_unitTextColor="@color/white"
+        app:sv_indicatorLightColor="#007A1111"
+        app:sv_backgroundCircleColor="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="@id/hand_throttle"
+        app:layout_constraintEnd_toEndOf="@id/hand_throttle"
+        app:layout_constraintTop_toBottomOf="@id/hand_throttle_text"
+        app:sv_maxSpeed="10"
+        app:sv_minSpeed="0"
+        app:sv_centerCircleColor="@color/black"
+        app:sv_unit=""
+        app:sv_withTremble="false"/>
+    <TextView
+        android:id="@+id/e_to_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/e_to"
+        android:layout_marginTop="105dp"
+        app:layout_constraintStart_toStartOf="@id/e_to"
+        app:layout_constraintEnd_toEndOf="@id/e_to"
+        android:text="Engine Torque"/>
+
+    <com.github.anastr.speedviewlib.PointerSpeedometer
+        android:id="@+id/m_to"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:sv_textColor="#00FFFFFF"
+        app:sv_speedTextColor="@color/white"
+        app:sv_indicator="NeedleIndicator"
+        app:sv_centerCircleRadius="8dp"
+        app:sv_unitTextColor="@color/white"
+        app:sv_indicatorLightColor="#007A1111"
+        app:sv_backgroundCircleColor="#00FFFFFF"
+        app:layout_constraintStart_toEndOf="@id/hand_throttle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:sv_maxSpeed="15"
+        app:sv_minSpeed="-15"
+        app:sv_centerCircleColor="@color/black"
+        app:sv_unit=""
+        app:sv_withTremble="false"
+        android:layout_marginStart="5dp" />
+    <TextView
+        android:id="@+id/m_to_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/m_to"
+        android:layout_marginTop="105dp"
+        app:layout_constraintStart_toStartOf="@id/m_to"
+        app:layout_constraintEnd_toEndOf="@id/m_to"
+        android:text="Motor Torque"/>
+
+    <com.adp.communicationdisplay.BatteryView
+        android:id="@+id/battery_view"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_charging"
+        app:bv_charging="false"
+        app:bv_percent="50"
+        app:layout_constraintTop_toTopOf="@id/e_to"
+        app:layout_constraintBottom_toBottomOf="@id/e_to_text"
+        app:layout_constraintStart_toStartOf="@id/m_to"
+        app:layout_constraintEnd_toEndOf="@id/m_to"/>
+
+    <com.github.anastr.speedviewlib.PointerSpeedometer
+        android:id="@+id/odometer"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:sv_textColor="#00FFFFFF"
+        app:sv_speedTextColor="@color/white"
+        app:sv_indicator="NeedleIndicator"
+        app:sv_centerCircleRadius="8dp"
+        app:sv_unitTextColor="@color/white"
+        app:sv_indicatorLightColor="#007A1111"
+        app:sv_backgroundCircleColor="#00FFFFFF"
+        app:layout_constraintStart_toEndOf="@id/m_to"
+        app:layout_constraintTop_toTopOf="parent"
+        app:sv_maxSpeed="100"
+        app:sv_minSpeed="0"
+        app:sv_centerCircleColor="@color/black"
+        app:sv_unit="km"
+        app:sv_withTremble="false"
+        android:layout_marginStart="5dp" />
+    <TextView
+        android:id="@+id/odometerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/odometer"
+        android:layout_marginTop="105dp"
+        app:layout_constraintStart_toStartOf="@id/odometer"
+        app:layout_constraintEnd_toEndOf="@id/odometer"
+        android:text="Odometer"/>
+
+    <com.github.anastr.speedviewlib.PointerSpeedometer
+        android:id="@+id/milege_meter"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:sv_textColor="#00FFFFFF"
+        app:sv_speedTextColor="@color/white"
+        app:sv_indicator="NeedleIndicator"
+        app:sv_centerCircleRadius="8dp"
+        app:sv_unitTextColor="@color/white"
+        app:sv_indicatorLightColor="#007A1111"
+        app:sv_backgroundCircleColor="#00FFFFFF"
+        app:layout_constraintStart_toEndOf="@id/m_to"
+        app:layout_constraintTop_toTopOf="@id/e_to"
+        app:sv_maxSpeed="120"
+        app:sv_minSpeed="0"
+        app:sv_centerCircleColor="@color/black"
+        app:sv_unit="km/l"
+        app:sv_withTremble="false"
+        android:layout_marginStart="5dp" />
+    <TextView
+        android:id="@+id/milege_meter_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/milege_meter"
+        android:layout_marginTop="105dp"
+        app:layout_constraintStart_toStartOf="@id/milege_meter"
+        app:layout_constraintEnd_toEndOf="@id/milege_meter"
+        android:text="Milege"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESET"
+        android:id="@+id/reset_button"
+        app:layout_constraintStart_toEndOf="@id/odometer"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
