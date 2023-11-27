@@ -3785,13 +3785,13 @@ void irq(const CAN_message_t &ref) {
     uint8_t* msg;
     msg = ref.buf;
     
-    uint16_t enginespeed = (msg[0]<<8)|(msg[1]);
-    int speed1 = (int) enginespeed;
+    uint16_t motspeed = (msg[0]<<8)|(msg[1]);
+    int speed1 = (int) motspeed;
     data.motorRPM = (speed1-8192)*1.0;
-    data.veh_speed = data.motorRPM*2*PI*0.229*60*60/(1000*60*1.55*10.45);
+    data.veh_speed = data.motorRPM*2*PI*0.229*60*60*1.556/(1000*60*10.47);
     
-    uint16_t enginetorque = (msg[2]<<8)|(msg[3]);
-    int torque1 = (int) enginetorque;
+    uint16_t mottorque = (msg[2]<<8)|(msg[3]);
+    int torque1 = (int) mottorque;
     data.mototrTorque = (float) (torque1-16)*0.01; 
 
     uint16_t throttle = (msg[4]<<8)|(msg[5]);
