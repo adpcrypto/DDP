@@ -3841,7 +3841,7 @@ void loop() {
     data.kmpl = 1.0*data.dist/data.fuel;
     data.totalDist =1.0*data.totalDist + data.veh_speed*(t-prevt)/(1000.0*60*60);
     prevt=t;
-    if(count%21==0){
+    if(count%210==0){
       Serial.print("TRD");
       Serial.print(data.dist,6);
       Serial.print("#");
@@ -3852,7 +3852,7 @@ void loop() {
       Serial.print(data.kmpl,6);
       Serial.print("#");
       Serial.print("$\n");
-    }else if(count%2==0){
+    }else if(count%20==0){
       Serial.print("MV");
       Serial.print(data.millivoltdata,6);
       Serial.print("#");
@@ -3878,7 +3878,7 @@ void loop() {
       Serial.print(data.minTemp,6);
       Serial.print("#");
       Serial.print("$\n");
-    }else if(count%2==1){
+    }else if(count%20==10){
       Serial.print("ERPM");
       Serial.print(data.engineRPM,6);
       Serial.print("#");
@@ -3903,10 +3903,8 @@ void loop() {
     if(count==210){
       count=0;
     }
-    digitalWrite(LED_BUILTIN,HIGH);
-    delay(50);  
-    digitalWrite(LED_BUILTIN,LOW);
     delay(50);
+  
 
     
 

@@ -18,7 +18,7 @@ public class EngineFragment extends Fragment {
 
     DataViewModel dataViewModel;
     PointerSpeedometer engineRPMmeter,motorRPMmeter,enginetorquemeter,motorTorquemeter,
-        fuelmeter,batteryPowerMeter,engineThrottleMeter,SOCMeter;
+        fuelmeter,batteryPowerMeter,engineThrottleMeter,SOCMeter,currentmeter,voltmeter;
     public EngineFragment(){
 
     }
@@ -40,6 +40,8 @@ public class EngineFragment extends Fragment {
         batteryPowerMeter = view.findViewById(R.id.battery_power);
         engineThrottleMeter = view.findViewById(R.id.engine_throttle);
         SOCMeter = view.findViewById(R.id.battery_SOC);
+        currentmeter = view.findViewById(R.id.battery_Current);
+        voltmeter = view.findViewById(R.id.battery_voltage);
 
 
 
@@ -55,6 +57,14 @@ public class EngineFragment extends Fragment {
         dataViewModel.getMotorRPM().observe(getViewLifecycleOwner(), new Observer<Float>() {
             @Override
             public void onChanged(Float aFloat) {motorRPMmeter.speedTo(aFloat,100);}
+        });
+        dataViewModel.getMilliVolt().observe(getViewLifecycleOwner(), new Observer<Float>() {
+            @Override
+            public void onChanged(Float aFloat) {voltmeter.speedTo(aFloat/1000,100);}
+        });
+        dataViewModel.getBatteryCurrent().observe(getViewLifecycleOwner(), new Observer<Float>() {
+            @Override
+            public void onChanged(Float aFloat) {currentmeter.speedTo(aFloat,100);}
         });
         dataViewModel.getEngineTorque().observe(getViewLifecycleOwner(), new Observer<Float>() {
             @Override

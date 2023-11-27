@@ -125,6 +125,36 @@
         app:layout_constraintEnd_toEndOf="@id/engine_throttle"
         android:text="Engine Throttle"/>
 
+    <com.github.anastr.speedviewlib.PointerSpeedometer
+        android:id="@+id/battery_voltage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:sv_textColor="#00FFFFFF"
+        app:sv_speedTextColor="@color/white"
+        app:sv_indicator="NeedleIndicator"
+        app:sv_centerCircleRadius="8dp"
+        app:sv_unitTextColor="@color/white"
+        app:sv_indicatorLightColor="#007A1111"
+        app:sv_backgroundCircleColor="#00FFFFFF"
+        app:layout_constraintStart_toEndOf="@id/engine_throttle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:sv_maxSpeed="85"
+        app:sv_minSpeed="0"
+        app:sv_centerCircleColor="@color/black"
+        app:sv_unit=""
+        app:sv_withTremble="false"
+        android:layout_marginStart="15dp" />
+    <TextView
+        android:id="@+id/battery_voltage_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="@id/battery_voltage"
+        android:layout_marginTop="105dp"
+        app:layout_constraintStart_toStartOf="@id/battery_voltage"
+        app:layout_constraintEnd_toEndOf="@id/battery_voltage"
+        android:text="Battery Voltage"/>
+
 
 
     <com.github.anastr.speedviewlib.PointerSpeedometer
@@ -249,6 +279,36 @@
         app:layout_constraintStart_toStartOf="@id/battery_SOC"
         app:layout_constraintEnd_toEndOf="@id/battery_SOC"
         android:text="SOC"/>
+
+    <com.github.anastr.speedviewlib.PointerSpeedometer
+        android:id="@+id/battery_Current"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:sv_textColor="#00FFFFFF"
+        app:sv_speedTextColor="@color/white"
+        app:sv_indicator="NeedleIndicator"
+        app:sv_centerCircleRadius="8dp"
+        app:sv_unitTextColor="@color/white"
+        app:sv_indicatorLightColor="#007A1111"
+        app:sv_backgroundCircleColor="#00FFFFFF"
+        app:layout_constraintStart_toEndOf="@id/battery_SOC"
+        app:layout_constraintTop_toTopOf="@id/motor_RPM"
+        app:sv_maxSpeed="120"
+        app:sv_minSpeed="-30"
+        app:sv_centerCircleColor="@color/black"
+        app:sv_unit=""
+        app:sv_withTremble="false"
+        android:layout_marginStart="15dp" />
+    <TextView
+        android:id="@+id/battery_current_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="@id/battery_Current"
+        android:layout_marginTop="105dp"
+        app:layout_constraintStart_toStartOf="@id/battery_Current"
+        app:layout_constraintEnd_toEndOf="@id/battery_Current"
+        android:text="Battery Current"/>
 
 
 

@@ -25,10 +25,10 @@ import com.github.anastr.speedviewlib.SpeedView;
 public class MainFragment extends Fragment {
 
     DataViewModel dataViewModel;
-    BatteryView batteryView;
+
 
     Button reset;
-    PointerSpeedometer engineRPMmeter,engineTorqueMeter,motorTorqueMeter,throttleMeter,speedometer,odometer,milegemeter;
+    PointerSpeedometer engineRPMmeter,engineTorqueMeter,motorTorqueMeter,throttleMeter,speedometer,odometer,milegemeter,socMeter;
     public MainFragment(){
 
     }
@@ -50,7 +50,7 @@ public class MainFragment extends Fragment {
         throttleMeter =view.findViewById(R.id.hand_throttle);
         engineTorqueMeter = view.findViewById(R.id.e_to);
         motorTorqueMeter =view.findViewById(R.id.m_to);
-        batteryView = view.findViewById(R.id.battery_view);
+        socMeter = view.findViewById(R.id.SOCmeter);
         milegemeter = view.findViewById(R.id.milege_meter);
         odometer = view.findViewById(R.id.odometer);
 
@@ -65,11 +65,6 @@ public class MainFragment extends Fragment {
 
 
 
-        if(batteryView==null){
-            Toast.makeText(view.getContext(),"NULL",Toast.LENGTH_SHORT).show();
-        }else{
-            batteryView.setPercent(80);
-        }
 
         dataViewModel = new ViewModelProvider(getActivity()).get(DataViewModel.class);
 
@@ -111,9 +106,9 @@ public class MainFragment extends Fragment {
         dataViewModel.getSOC().observe(getViewLifecycleOwner(), new Observer<Float>() {
             @Override
             public void onChanged(Float s) {
-                Log.e("SOC","CHANGE");
-                Log.e("CHANGE",s.toString());
-                batteryView.setPercent((round(s)));
+//                Log.e("SOC","CHANGE");
+//                Log.e("CHANGE",s.toString());
+                socMeter.speedTo(s,100);
             }
         });
         dataViewModel.getKmpl().observe(getViewLifecycleOwner(), new Observer<Float>() {

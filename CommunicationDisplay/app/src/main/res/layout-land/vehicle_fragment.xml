@@ -152,17 +152,34 @@
         app:layout_constraintEnd_toEndOf="@id/m_to"
         android:text="Motor Torque"/>
 
-    <com.adp.communicationdisplay.BatteryView
-        android:id="@+id/battery_view"
-        android:layout_width="80dp"
+    <com.github.anastr.speedviewlib.PointerSpeedometer
+        android:id="@+id/SOCmeter"
+        android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/ic_charging"
-        app:bv_charging="false"
-        app:bv_percent="50"
-        app:layout_constraintTop_toTopOf="@id/e_to"
-        app:layout_constraintBottom_toBottomOf="@id/e_to_text"
+        app:sv_textColor="#00FFFFFF"
+        app:sv_speedTextColor="@color/white"
+        app:sv_indicator="NeedleIndicator"
+        app:sv_centerCircleRadius="8dp"
+        app:sv_unitTextColor="@color/white"
+        app:sv_indicatorLightColor="#007A1111"
+        app:sv_backgroundCircleColor="#00FFFFFF"
         app:layout_constraintStart_toStartOf="@id/m_to"
-        app:layout_constraintEnd_toEndOf="@id/m_to"/>
+        app:layout_constraintTop_toTopOf="@id/e_to"
+        app:sv_maxSpeed="100"
+        app:sv_minSpeed="0"
+        app:sv_centerCircleColor="@color/black"
+        app:sv_unit=""
+        app:sv_withTremble="false"
+        android:layout_marginStart="5dp" />
+    <TextView
+        android:id="@+id/SOCmetertext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/SOCmeter"
+        android:layout_marginTop="105dp"
+        app:layout_constraintStart_toStartOf="@id/SOCmeter"
+        app:layout_constraintEnd_toEndOf="@id/SOCmeter"
+        android:text="SOC"/>
 
     <com.github.anastr.speedviewlib.PointerSpeedometer
         android:id="@+id/odometer"
