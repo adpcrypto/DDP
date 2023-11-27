@@ -202,11 +202,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         };
     };
 
-    public static void reset(Context context){
+    public static void reset(){
         if(serialDevice==null){
-            Toast.makeText(context, "NO DEVICE",Toast.LENGTH_SHORT);
+            //Toast.makeText(context, "NO DEVICE",Toast.LENGTH_SHORT);
             Log.e("A","A");
         }else {
+            Log.e("X","X");
             serialDevice.write("X".getBytes());
         }
     }

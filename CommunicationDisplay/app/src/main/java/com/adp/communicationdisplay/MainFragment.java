@@ -59,7 +59,7 @@ public class MainFragment extends Fragment {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity.reset(getContext().getApplicationContext());
+                MainActivity.reset();
             }
         });
 

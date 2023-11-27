@@ -3791,7 +3791,11 @@ void irq(const CAN_message_t &ref) {
     uint16_t motspeed = (msg[0]<<8)|(msg[1]);
     int speed1 = (int) motspeed;
     data.motorRPM = (speed1-8192)*1.0;
-    data.veh_speed = data.motorRPM*2*PI*0.229*60*60*1.556/(1000*60*10.47);
+    if(data.motorRPM<0){
+      data.veh_speed=0;
+    }else{
+      data.veh_speed = data.motorRPM*2*PI*0.229*60*60*1.556/(1000*60*10.47);
+    }
     
     uint16_t mottorque = (msg[2]<<8)|(msg[3]);
     int torque1 = (int) mottorque;
@@ -3830,11 +3834,10 @@ void setup() {
 }
 
 void loop() {
-    String a = Serial.read();
-    if(a=="R"){
+    char a = Serial.read();
+    if(a=='X'){
       data.dist=0;
       data.fuel = 1e-10;
-      delay(1000);
     }
     int t = millis();
     if(data.engineRPM<100){
